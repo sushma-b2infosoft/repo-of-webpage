@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order - FreshShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Place Your Order</h2>
+    <form id="orderForm">
+      <input type="text" id="itemName" placeholder="Item Name" required>
+      <input type="number" id="quantity" placeholder="Quantity" required>
+      <button type="submit">Submit Order</button>
+    </form>
+    <p id="orderMsg"></p>
+  </div>
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const item = document.getElementById("itemName").value;
+      const qty = document.getElementById("quantity").value;
+      const orders = JSON.parse(localStorage.getItem("orders")) || [];
+      orders.push({ item, qty });
+      localStorage.setItem("orders", JSON.stringify(orders));
+      document.getElementById("orderMsg").textContent = "Order placed!";
+    });
+  </script>
+</body>
+</html>

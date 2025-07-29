@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Validated Form with Popup</title>
+  <style>
+    body {
+      background-color: #007bff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 50px;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      width: 350px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    /* Overlay & popup box */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      width: 320px;
+    }
+
+    .popup h3 {
+      margin-top: 0;
+      color: green;
+    }
+
+    .popup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Signup Form</h2>
+  <form id="signupForm" onsubmit="return handleSubmit(event)" action="">
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <input type="email" id="email" placeholder="Enter your email">
+    <div class="error" id="emailError"></div>
+
+    <input type="password" id="password" placeholder="Enter your password">
+    <div class="error" id="passwordError"></div>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<!-- Popup and overlay -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+  <h3>✅ Thank You!</h3>
+  <p>Your application is submitted successfully.</p>
+  <button onclick="closePopup()">Close</button>
+</div>
+
+<script>
+function handleSubmit(event) {
+  event.preventDefault(); // Prevent form reload
+
+  // Get values
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  // Error elements
+  const emailError = document.getElementById("emailError");
+  const passwordError = document.getElementById("passwordError");
+
+  // Reset errors
+  emailError.textContent = "";
+  passwordError.textContent = "";
+
+  // Email validation
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  let valid = true;
+
+  if (!emailPattern.test(email)) {
+    emailError.textContent = "Your email is invalid.";
+    valid = false;
+  }
+
+  // Password validation
+  if (password === "") {
+    passwordError.textContent = "Password is required.";
+    valid = false;
+  } else if (password.length < 8) {
+    passwordError.textContent = "Password must be at least 8 characters.";
+    valid = false;
+  }
+
+  if (!valid) {
+    return false;
+  }
+
+  // Show popup if all is valid
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
+
+  // Optionally clear form
+  event.target.reset();
+  return false;
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment - FreshShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Payment Details</h2>
+    <form id="paymentForm">
+      <input type="text" placeholder="Cardholder Name" required>
+      <input type="text" placeholder="Card Number" required>
+      <input type="text" placeholder="Expiry (MM/YY)" required>
+      <input type="text" placeholder="CVV" required>
+      <button type="submit">Pay Now</button>
+    </form>
+    <p id="payMsg"></p>
+  </div>
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('payMsg').innerText = 'Payment Successful!';
+    });
+  </script>
+</body>
+</html>
