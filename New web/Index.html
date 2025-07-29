@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshShop - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+  <div class="logo">
+    <img src="https://cdn-icons-png.flaticon.com/512/2935/2935282.png" alt="logo" width="30" style="vertical-align: middle;" />
+    FreshShop
+  </div>
+
+  <div class="nav-container">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="view-orders.html">View Orders</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="payment.html">Payment</a></li>
+        <li>Cart <span id="cartCount" class="cart-counter">0</span></li>
+      </ul>
+	  </nav>
+	  <div class="search-container">
+      <input type="text" placeholder="Search coffee..." id="searchInput" />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+  </div>
+</header>
+
+  
+
+  <div class="slider" id="home">
+    <img src="https://images.unsplash.com/photo-1495774856032-8b90bbb32b32?w=600" class="active">
+    <img src="https://plus.unsplash.com/premium_photo-1673459683873-a8a47e1a5ab9?w=600">
+    <img src="https://images.unsplash.com/photo-1521401292936-0a2129a30b1c?w=600">
+  </div>
+  <!-- Product Section -->
+  <section id="products" class="section">
+    <div class="product-section">
+      <div class="product-text">
+        <h2>Signature Espresso</h2>
+        <p>Freshly roasted beans, finely ground and brewed to perfection. Our signature espresso is crafted for true coffee lovers who crave bold and rich flavor.</p>
+        <p><strong>Price: ₹250</strong></p>
+		<button onclick="addToCart('Cappuccino', 270)">Add to Cart</button>
+      </div>
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1495774856032-8b90bbb32b32?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODB8fGNhZmV8ZW58MHx8MHx8fDA%3D" alt="Espresso">
+      </div>
+    </div>
+  </section>
+  <section id="products" class="section">
+  <h2 style="text-align:center; margin-bottom: 20px;">Our Coffee Collection</h2>
+  <div class="product-grid">
+  <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=300" alt="Espresso">
+      <h3>Espresso</h3>
+      <p>Rich and bold flavor to kickstart your day.</p>
+      <p><strong>₹250</strong></p>
+      <button onclick="addToCart('Espresso', 250)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=300" alt="Cappuccino">
+      <h3>Cappuccino</h3>
+      <p>Perfect mix of coffee, milk and foam.</p>
+      <p><strong>₹270</strong></p>
+      <button onclick="addToCart('Cappuccino', 270)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://plus.unsplash.com/premium_photo-1673545518947-ddf3240090b1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29mZmVlfGVufDB8fDB8fHww">
+      <h3>Latte</h3>
+      <p>Smooth and creamy delight in every sip.</p>
+      <p><strong>₹240</strong></p>
+      <button onclick="addToCart('Latte', 240)">Add to Cart</button>
+    </div>
+
+    <!-- Add 17 more similar blocks below -->
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=300" alt="Cold Brew">
+      <h3>Cold Brew</h3>
+      <p>Chilled coffee steeped for 12 hours.</p>
+      <p><strong>₹180</strong></p>
+      <button onclick="addToCart('Cold Brew', 180)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://plus.unsplash.com/premium_photo-1674327105074-46dd8319164b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGNvZmZlZXxlbnwwfHwwfHx8MA%3D%3D">
+      <h3>Mocha</h3>
+      <p>Blend of coffee and chocolate flavors.</p>
+      <p><strong>₹260</strong></p>
+      <button onclick="addToCart('Mocha', 260)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1495862433577-132cf20d7902?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNvZmZlZXxlbnwwfHwwfHx8MA%3D%3D">
+      <h3>Americano</h3>
+      <p>Strong espresso diluted with water.</p>
+      <p><strong>₹230</strong></p>
+      <button onclick="addToCart('Americano', 230)">Add to Cart</button>
+    </div>
+	<div class="product-card">
+      <img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29mZmVlfGVufDB8fDB8fHww">
+      <h3>Decaf Coffee</h3>
+      <p>Same great taste without the caffeine.</p>
+      <p><strong>₹230</strong></p>
+      <button onclick="addToCart('Americano', 230)">Add to Cart</button>
+    </div>
+	<div class="product-card">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=300" alt="Americano">
+      <h3>Americano</h3>
+      <p>Strong espresso diluted with water.</p>
+      <p><strong>₹230</strong></p>
+      <button onclick="addToCart('Americano', 230)">Add to Cart</button>
+    </div>
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="product-section">
+      <div class="product-image1">
+        <img src="https://images.unsplash.com/photo-1502462041640-b3d7e50d0662?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNvZmZlZXxlbnwwfHwwfHx8MA%3D%3D">
+      </div>
+      <div class="product-text1">
+        <h2>Cold Brew</h2>
+        <p>Slow-steeped coffee served cold, naturally sweet and highly refreshing.</p>
+		<p><strong>Price: ₹180</strong></p>
+		<button onclick="addToCart('Cappuccino', 270)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About Us</h3>
+        <p>FreshShop is your go-to place for premium coffee. We believe coffee isn't just a drink – it's an experience worth brewing perfectly.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul>
+          <li><a href="#">Espresso</a></li>
+          <li><a href="#">Cappuccino</a></li>
+          <li><a href="#">Latte</a></li>
+          <li><a href="#">Cold Brew</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <p>📍 123 Coffee Lane, Roast City</p>
+        <p>📞 +91-9876543210</p>
+        <p>📧 hello@freshshop.com</p>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 20px;">&copy; 2025 FreshShop. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
