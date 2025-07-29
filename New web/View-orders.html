@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Orders - FreshShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Your Orders</h2>
+    <ul id="ordersList"></ul>
+  </div>
+  <script>
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const list = document.getElementById("ordersList");
+    orders.forEach((o, i) => {
+      const li = document.createElement("li");
+      li.textContent = `${i + 1}. ${o.item} - Qty: ${o.qty}`;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
