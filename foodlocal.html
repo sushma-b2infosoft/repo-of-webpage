@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Colorful Food Orders</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+    }
+
+    .container {
+      max-width:400px;
+      margin: 50px auto;
+      background: #ffffffdd;
+      padding: 25px 30px;
+      border-radius:20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    h2, h3 {
+      text-align: center;
+      color: #ff5722;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 2px solid #ffa07a;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #ff4500;
+      outline: none;
+      background-color: #fffaf0;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button[type="submit"] {
+      background-color: #ff7043;
+      color: white;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #e64a19;
+    }
+
+    #clearOrders {
+      background-color: #b71c1c;
+      color: white;
+      margin-top: 10px;
+    }
+
+    #clearOrders:hover {
+      background-color: #d32f2f;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: linear-gradient(to right, #ffd194, #70e1f5);
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      font-size: 17px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🍕 Food Order Form</h2>
+    <form id="orderForm">
+      <input type="text" id="customerName" placeholder="👤 Your Name" required />
+      <input type="text" id="foodItem" placeholder="🍔 Food Item (e.g. Burger)" required />
+      <input type="number" id="quantity" placeholder="🔢 Quantity" min="1" required />
+      <button type="submit">✅ Place Order</button>
+      <button type="button" id="clearOrders">🗑️ Clear All Orders</button>
+    </form>
+
+    <h3>🧾 Orders:</h3>
+    <ul id="ordersList"></ul>
+  </div>
+
+  <script>
+    const form = document.getElementById("orderForm");
+    const ordersList = document.getElementById("ordersList");
+    const clearBtn = document.getElementById("clearOrders");
+
+    window.onload = () => {
+      displayOrders();
+    };
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("customerName").value.trim();
+      const item = document.getElementById("foodItem").value.trim();
+      const qty = parseInt(document.getElementById("quantity").value.trim());
+
+      if (!name || !item || qty < 1) {
+        alert("Please fill out the form correctly.");
+        return;
+      }
+
+      const newOrder = { name, item, qty };
+      const orders = JSON.parse(localStorage.getItem("foodOrders")) || [];
+      orders.push(newOrder);
+      localStorage.setItem("foodOrders", JSON.stringify(orders));
+
+      displayOrders();
+      form.reset();
+    });
+
+    function displayOrders() {
+      const orders = JSON.parse(localStorage.getItem("foodOrders")) || [];
+      ordersList.innerHTML = "";
+
+      if (orders.length === 0) {
+        ordersList.innerHTML = "<li style='background:#ffebee;color:#c62828;'>No orders yet.</li>";
+        return;
+      }
+
+      orders.forEach(order => {
+        const li = document.createElement("li");
+        li.textContent = `👤 ${order.name} ordered 🍽️ ${order.qty} x ${order.item}`;
+        ordersList.appendChild(li);
+      });
+    }
+
+    clearBtn.addEventListener("click", () => {
+      localStorage.removeItem("foodOrders");
+      displayOrders();
+    });
+  </script>
+
+</body>
+</html>
+

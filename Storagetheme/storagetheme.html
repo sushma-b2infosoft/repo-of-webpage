@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Preferences</title>
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 50px;
+}
+
+.container {
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+input[type="text"] {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  margin-top: 10px;
+}
+
+/* Themes */
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+  
+  
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 id="greeting">Welcome!</h2>
+
+    <form id="prefsForm">
+      <input type="text" id="username" placeholder="Enter your name" required />
+
+      <label>
+        <input type="radio" name="theme" value="light" checked> Light Theme
+      </label>
+      <label>
+        <input type="radio" name="theme" value="dark"> Dark Theme
+      </label>
+
+      <button type="submit">Save Preferences</button>
+    </form>
+	<form id="prefsForm">
+  <input type="text" id="username" placeholder="Enter your name" required />
+
+  <label>
+    <input type="radio" name="theme" value="light" checked> Light Theme
+  </label>
+  <label>
+    <input type="radio" name="theme" value="dark"> Dark Theme
+  </label>
+
+  <button type="submit">Save Preferences</button>
+  <button type="button" id="resetBtn">Reset Preferences</button> <!-- 👈 New -->
+</form>
+  </div>
+
+  <script>
+ const form = document.getElementById("prefsForm");
+const greeting = document.getElementById("greeting");
+const usernameInput = document.getElementById("username");
+const resetBtn = document.getElementById("resetBtn");
+
+// Load preferences on page load
+window.onload = () => {
+  const savedPrefs = localStorage.getItem("userPrefs");
+
+  if (savedPrefs) {
+    const prefs = JSON.parse(savedPrefs);
+
+    document.body.className = prefs.theme;
+    greeting.textContent = `Welcome back, ${prefs.username}!`;
+
+    usernameInput.value = prefs.username;
+    document.querySelector(`input[name="theme"][value="${prefs.theme}"]`).checked = true;
+  }
+};
+
+// Save preferences
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const username = usernameInput.value.trim();
+  const theme = document.querySelector('input[name="theme"]:checked').value;
+
+  if (!username) {
+    alert("Please enter your name.");
+    return;
+  }
+
+  const prefs = { username, theme };
+
+  localStorage.setItem("userPrefs", JSON.stringify(prefs));
+
+  document.body.className = theme;
+  greeting.textContent = `Welcome, ${username}!`;
+});
+
+// Reset preferences
+resetBtn.addEventListener("click", () => {
+  // Clear localStorage
+  localStorage.removeItem("userPrefs");
+
+  // Reset UI
+  document.body.className = "light"; // default theme
+  greeting.textContent = "Welcome!";
+  form.reset(); // reset form inputs
+});
+
+
+  
+  </script>
+</body>
+</html>
+
+
+
+
+
+
