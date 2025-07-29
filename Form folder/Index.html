@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title> Feedback form</title>
+<link rel="stylesheet"href="form.css">
+</head>
+<body>
+<form class="form">
+<h2>Given Feedback</h2>
+<label>Name:</label>
+<input type="text" id="Name" value=""><br>
+<label>Email:</label>
+<input type="text" id="Email" value=""><br>
+<label>Rating:</label>
+      <select id="rating" name="rating" required>
+      <option value="">Select</option>
+      <option value="5">5 - Excellent</option>
+      <option value="4">4 - Good</option>
+      <option value="3">3 - Average</option>
+      <option value="2">2 - Poor</option>
+      <option value="1">1 - Bad</option>
+    </select><br>
+<label>Message:</label>
+<textarea id="message" name="message" value=""></textarea>
+<button type="submit">Submit Feedback</button>
+</form>
+</body>
+</html>
