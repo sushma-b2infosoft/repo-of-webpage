@@ -1,0 +1,14 @@
+Why Do We Use File Handling?
+Use Cases:
+
+Storing user-generated content (e.g., blog posts, comments)
+
+Logging errors or events
+
+Uploading and saving user files (images, documents)
+
+Reading/writing configuration files
+
+Data backups
+
+Temporary file creation

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic HTML Form</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form action="form.php" method="post">
+  <label>Name:</label><br>
+  <input type="text" name="name"><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" name="email"><br><br>
+
+  <label>Password:</label><br>
+  <input type="password" name="password"><br><br>
+
+  <label>About You:</label><br>
+  <textarea name="about" rows="4" cols="30"></textarea><br><br>
+
+  <label>Gender:</label><br>
+  <input type="radio" name="gender" value="Male"> Male
+  <input type="radio" name="gender" value="Female"> Female<br><br>
+
+  <label>Hobbies:</label><br>
+  <input type="checkbox" name="hobbies[]" value="Reading"> Reading
+  <input type="checkbox" name="hobbies[]" value="Traveling"> Traveling
+  <input type="checkbox" name="hobbies[]" value="Coding"> Coding<br><br>
+
+  <label>Country:</label><br>
+  <select name="country">
+    <option value="India">India</option>
+    <option value="USA">USA</option>
+    <option value="UK">UK</option>
+  </select><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

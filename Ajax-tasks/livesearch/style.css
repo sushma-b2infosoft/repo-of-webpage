@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f9;
+}
+
+.search-container {
+  width: 400px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+#search {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+}
+
+#result {
+  margin-top: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.highlight {
+  background: yellow;
+  font-weight: bold;
+}

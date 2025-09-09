@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PHP Form Validation</title>
+
+<style>
+    body {
+      font-family: Arial;
+      background-color: #f4f4f4;
+      margin: 50px;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"], input[type="email"], input[type="password"], textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+    input[type="submit"] {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .error { color: red; font-size: 14px; }
+    .success { color: green; font-weight: bold; }
+    label { font-weight: bold; }
+  </style>
+</head>
+<body>
+<div class="form-container">
+  <h2>User Registration Form</h2>
+  <?php if ($successMsg): ?>
+    <p class="success"><?= $successMsg ?></p>
+  <?php endif; ?>
+  <form method="post" action="issetoremptyfun.php">
+    
+    <label>Name:</label>
+    <input type="text" name="name" value="">
+    <span class="error"><?= $nameErr ?></span><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" value="">
+    <span class="error"><?= $emailErr ?></span><br>
+
+    <label>Password:</label>
+    <input type="password" name="password" value="">
+    <span class="error"><?= $passwordErr ?></span><br>
+
+    <label>Gender:</label><br>
+    <input type="radio" name="gender" value="Male" <?= ($gender == "Male") ? "checked" : "" ?> Male
+    <input type="radio" name="gender" value="Female" <?= ($gender == "Female") ? "checked" : "" ?> Female
+    <span class="error"><?= $genderErr ?></span><br><br>
+
+    <label>Country:</label>
+    <select name="country">
+      <option value="">--Select Country--</option>
+      <option value="India" <?= ($country == "India") ? "selected" : "" ?>>India</option>
+      <option value="USA" <?= ($country == "USA") ? "selected" : "" ?>>USA</option>
+      <option value="UK" <?= ($country == "UK") ? "selected" : "" ?>>UK</option>
+    </select>
+    <span class="error"><?= $countryErr ?></span><br>
+
+    <label>Message:</label>
+    <textarea name="message"></textarea>Message</textarea>
+    <span class="error"><?= $messageErr ?></span><br>
+
+    <input type="submit" value="Submit">
+
+  </form>
+</div>
+
+</body>
+</html>

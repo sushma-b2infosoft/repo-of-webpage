@@ -1,0 +1,160 @@
+/* Reset + background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card */
+.task-container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 450px;
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input + Button Row */
+.task-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.task-form button {
+  background: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.task-form button:hover {
+  background: #43a047;
+}
+
+/* Filters */
+.filters {
+  text-align: center;
+  margin: 15px 0;
+}
+.filters button {
+  background: #eee;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: 0.3s;
+}
+.filters button:hover {
+  background: #ddd;
+}
+
+/* Search */
+#searchBox {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+}
+
+/* Task Row */
+.task {
+  background: #f9f9f9;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+
+  /* FLEX FIX */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.task span {
+  flex: 1;
+  white-space: normal;
+  word-break: break-word;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Buttons inside task */
+.task div {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* Completed */
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+
+/* Buttons */
+.task button {
+  padding: 5px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.task button:nth-child(1) { background: #2196F3; color: #fff; } /* Edit */
+.task button:nth-child(2) { background: #f44336; color: #fff; } /* Delete */
+.task button:nth-child(3) { background: #FF9800; color: #fff; } /* Toggle */
+
+.task button:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+}
+
+
+/* Pagination */
+.pagination {
+  text-align: center;
+  margin-top: 15px;
+}
+.pagination button {
+  background: #2196F3;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin: 0 5px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.pagination button:hover {
+  background: #1976d2;
+}
+
